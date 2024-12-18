@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-backend #Наименование
+spec:
+  replicas: 1 #Количество реплик
+  revisionHistoryLimit: 10 # Грубина истории ReplicaSet
+  selector:
+    matchLabels:
+      app: service-backend #Наименование
+  strategy: # Описание стратегии обновления подов
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: service-backend #Наименование
+    spec:
+      containers:
+        - name: service-backend #Наименование
+          image: service-backend:latest # Образ приложения
+          imagePullPolicy: Never # Политика обновления образа
+          ports: # Описание портов приложения
+            - name: http
+              containerPort: 8079
+              protocol: TCP

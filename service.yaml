@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: service-backend #Наименование
+  name: service-backend #Наименование
+spec:
+  ports: #Описание используемых портов
+    - port: 8079
+      protocol: TCP
+      targetPort: 8079
+  selector:
+    app: service-backend #Наименование, используемое для связи с Deployment
+  type: ClusterIP

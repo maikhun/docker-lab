@@ -14,8 +14,7 @@ services:
     environment:
       TZ: "Europe/Moscow"
     ports:
-      - 8080:8080
-      - 8078:8080
+      - 8079:8080
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
 networks:

@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: service-backend-ingress # Наименование
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx # Класс в Ingress-controller
+  rules: # Описание правил и портов
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: service-backend # Наименование сервиса для проксирования запросов
+                port:
+                  number: 8079 # Порт на который запросы будут проксироваться 
