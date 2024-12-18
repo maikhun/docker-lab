@@ -11,6 +11,6 @@ COPY . ./
 RUN CGO_ENABLED=0 go build -o ./app
 RUN chmod +x ./app
 
-EXPOSE 8080
+EXPOSE 8079
 
 CMD ["/app/app"]

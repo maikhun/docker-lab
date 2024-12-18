@@ -21,5 +21,5 @@ func main() {
 	e.GET("/", getRoot)
 
 	// Start server
-	e.Logger.Fatal(e.Start(":8080"))
+	e.Logger.Fatal(e.Start(":8079"))
 }

@@ -1,0 +1,5 @@
+services:
+ service-backend:
+  image: service-backend:latest
+  ports: 
+    - 8080:8079
