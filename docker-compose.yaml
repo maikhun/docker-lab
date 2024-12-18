@@ -1,5 +1,22 @@
 services:
- service-backend:
-  image: service-backend:latest
-  ports: 
-    - 8080:8079
+  service-backend:
+    image: service-backend:latest
+    container_name: service-backend
+    hostname: service-backend
+    networks:
+      - rsreu-lab-network
+  web_nginx:
+    image: nginx:latest
+    hostname: web_nginx
+    container_name: web_nginx
+    networks:
+      - rsreu-lab-network
+    environment:
+      TZ: "Europe/Moscow"
+    ports:
+      - 8080:8080
+      - 8078:8080
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+networks:
+  rsreu-lab-network:

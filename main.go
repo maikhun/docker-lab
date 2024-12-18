@@ -10,6 +10,10 @@ func getRoot(c echo.Context) error {
 	return c.String(http.StatusOK, "Hello, World!")
 }
 
+func getSay(c echo.Context) error {
+	return c.String(http.StatusOK, "Привет, Мир!")
+}
+
 func main() {
 	e := echo.New()
 
@@ -19,6 +23,7 @@ func main() {
 
 	// Routes
 	e.GET("/", getRoot)
+	e.GET("/say", getSay)
 
 	// Start server
 	e.Logger.Fatal(e.Start(":8079"))
